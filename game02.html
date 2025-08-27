@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YonoRummy</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+  }
+
+  .slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    margin: 0; 
+    overflow: hidden;
+  }
+
+  .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .slide.active {
+    opacity: 1;
+  }
+
+  .card-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin: 20px auto;
+    max-width: 1200px;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .card {
+    background-color: #111;
+    padding: 20px;
+    border-radius: 30px;
+    color: #fff;
+    width: 20%;
+    min-width: 100px;
+    transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+    border: 2px solid transparent;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
+  }
+
+  .card:hover,
+  .card.active {
+    transform: translateY(-10px);
+  }
+
+  .card:nth-child(1):hover,
+  .card:nth-child(1).active { border: 2px solid #FFB7C5; box-shadow: 0 0 20px rgba(255,183,197,0.8),0 0 40px rgba(255,120,160,0.6),0 0 60px rgba(255,80,130,0.4); }
+  .card:nth-child(2):hover,
+  .card:nth-child(2).active { border: 2px solid #B5EAD7; box-shadow: 0 0 20px rgba(181,234,215,0.8),0 0 40px rgba(120,220,180,0.6),0 0 60px rgba(80,200,150,0.4); }
+  .card:nth-child(3):hover,
+  .card:nth-child(3).active { border: 2px solid #C7CEEA; box-shadow: 0 0 20px rgba(199,206,234,0.8),0 0 40px rgba(150,160,230,0.6),0 0 60px rgba(120,130,220,0.4); }
+
+  .card:nth-child(1):hover {
+    border: 2px solid #FFB7C5;
+    box-shadow: 
+      0 0 20px rgba(255, 183, 197, 0.8),
+      0 0 40px rgba(255, 120, 160, 0.6),
+      0 0 60px rgba(255, 80, 130, 0.4);
+  }
+
+  .card:nth-child(2):hover {
+    border: 2px solid #B5EAD7;
+    box-shadow: 
+      0 0 20px rgba(181, 234, 215, 0.8),
+      0 0 40px rgba(120, 220, 180, 0.6),
+      0 0 60px rgba(80, 200, 150, 0.4);
+  }
+
+  .card:nth-child(4):hover {
+    border: 2px solid #FFDAC1;
+    box-shadow: 
+      0 0 20px rgba(255, 218, 193, 0.8),
+      0 0 40px rgba(255, 190, 150, 0.6),
+      0 0 60px rgba(255, 150, 100, 0.4);
+  }
+
+  .card h3, 
+  .card h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    position: relative;
+    padding-bottom: 5px;
+    text-align: center;
+  }
+
+  .card h3::after,
+  .card h4::after {
+    content: "";
+    display: block;
+    width: 70%;
+    height: 2px;
+    background: linear-gradient(to right, #0ff, #444);
+    margin: 6px auto 0;
+    border-radius: 2px;
+  }
+
+  .title1 { color: #FFB7C5; text-shadow: 0 0 8px #FFB7C5; }
+  .title2 { color: #B5EAD7; text-shadow: 0 0 8px #B5EAD7; }
+  .title3 { color: #FFDAC1; text-shadow: 0 0 8px #FFDAC1; }
+
+  @media (max-width: 768px) {
+    .card-container {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 15px;
+      margin: 15px auto;
+      padding: 0 15px;
+    }
+    .card {
+      width: 100%;
+      max-width: none;
+      margin: 0;
+    }
+    .slideshow-container {
+      height: 30vh;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .card-container {
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    .card {
+      width: 45%;
+      max-width: 500px;
+    }
+    .slideshow-container {
+      height: 35vh;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="slideshow-container">
+  <img src="https://i.postimg.cc/bJCCGvm9/WEB-2.png" class="slide active" alt="图片1">
+  <img src="https://i.postimg.cc/xTHwZKxr/WEBSITE-2.png" class="slide" alt="图片2">
+  <img src="https://i.postimg.cc/gJXSZW19/YONO-E2.png" class="slide" alt="图片3">
+</div>
+
+<div class="card-container">
+  <div class="card">
+    <h3 class="title1">Highlights of Yono Rummy</h3>
+    <p>• Friendly Interface: Modern and easy-to-use design.</p>
+    <p>• Rapidly updated results: Accurate and timely info.</p>
+    <p>• Security and confidentiality system: Protects personal information.</p>
+    <p>• 24/7 Support: Multiple communication channels.</p>
+    <p>• Attractive Promotions: Daily bonus, deposit bonus, mystery bonus.</p>
+    <p>• Regular system optimization for smooth experience.</p>
+    <p>• Innovative games and bonus features for fresh experience.</p>
+  </div>
+
+  <div class="card">
+    <h3 class="title2">Key Features</h3>
+    <p>1. Multiple Games: Variety of game types for players.</p>
+    <p>2. User-friendly interface: Simple navigation.</p>
+    <p>3. Exciting Bonuses: Welcome bonus, free spins, daily bonus.</p>
+    <p>4. Safe and Reliable: State-of-the-art encryption.</p>
+    <p>5. Mobile Compatibility: Fully optimized for Android devices.</p>
+    <h4 class="title3">How to Claim Welcome Bonus</h4>
+    <p>1. Click "Download" to install the App</p>
+    <p>2. Register your account and verify mobile</p>
+    <p>3. Bind mobile phone number</p>
+    <p>4. Bonus credited instantly</p>
+  </div>
+
+  <div class="card">
+    <h3 class="title1">Perfect For</h3>
+    <p>- Players who like multiple online games</p>
+    <p>- Players who require simple operation and fast deposit/withdrawal</p>
+    <p>- Players who like real money rewards and welfare activities</p>
+    <h4 class="title2">Questions & Answers</h4>
+    <p>Q1: Can the app be downloaded to multiple devices?</p>
+    <p>A: Only one device can log in at a time for fairness.</p>
+    <p>Q2: Can I register multiple accounts?</p>
+    <p>A: Each player is encouraged to have one account.</p>
+    <p>Q3: Is there a fee to download the app?</p>
+    <p>A: Players do not pay anything when downloading.</p>
+  </div>
+</div>
+
+<script>
+  let slides = document.querySelectorAll('.slide');
+  let currentIndex = 0;
+
+  setInterval(() => {
+    slides[currentIndex].classList.remove('active');
+    currentIndex = (currentIndex + 1) % slides.length;
+    slides[currentIndex].classList.add('active');
+  }, 3000);
+</script>
+
+</body>
+</html>
