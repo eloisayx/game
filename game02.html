@@ -3,19 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YonoRummy</title>
+<title>轮播 + 卡片</title>
 <style>
   body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #000;
+    background-color: #000; /* 全黑背景 */
     color: #fff;
   }
 
+  /* 上方轮播 */
   .slideshow-container {
     position: relative;
     width: 100%;
-    height: 40vh;
+    height: 40vh; /* 桌面端高度 */
     margin: 0; 
     overflow: hidden;
   }
@@ -26,7 +27,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    object-fit: cover;
+    object-fit: cover; /* 铺满容器，不留黑边 */
     opacity: 0;
     transition: opacity 1s ease-in-out;
   }
@@ -35,131 +36,100 @@
     opacity: 1;
   }
 
+  /* 下方卡片容器 */
   .card-container {
     display: flex;
     justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    margin: 20px auto;
-    max-width: 1200px;
-    padding: 0 20px;
-    box-sizing: border-box;
+    gap: 150px; /* 卡片间距 */
+    margin: 40px auto;
+    max-width: 1800px;
+    flex-wrap: nowrap; /* 桌面端保持三列 */
   }
 
+  /* 卡片 */
   .card {
     background-color: #111;
-    padding: 20px;
+    padding: 30px;
+    width: 30%; /* 桌面端：3列 */
     border-radius: 30px;
     color: #fff;
-    width: 20%;
-    min-width: 100px;
-    transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
-    border: 2px solid transparent;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-    box-sizing: border-box;
+    transition: transform 0.3s;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4); /* 淡cyan光晕 */
   }
 
-  .card:hover,
-  .card.active {
+  .card:hover {
     transform: translateY(-10px);
   }
 
-  .card:nth-child(1):hover,
-  .card:nth-child(1).active { border: 2px solid #FFB7C5; box-shadow: 0 0 20px rgba(255,183,197,0.8),0 0 40px rgba(255,120,160,0.6),0 0 60px rgba(255,80,130,0.4); }
-  .card:nth-child(2):hover,
-  .card:nth-child(2).active { border: 2px solid #B5EAD7; box-shadow: 0 0 20px rgba(181,234,215,0.8),0 0 40px rgba(120,220,180,0.6),0 0 60px rgba(80,200,150,0.4); }
-  .card:nth-child(3):hover,
-  .card:nth-child(3).active { border: 2px solid #C7CEEA; box-shadow: 0 0 20px rgba(199,206,234,0.8),0 0 40px rgba(150,160,230,0.6),0 0 60px rgba(120,130,220,0.4); }
-
-  .card:nth-child(1):hover {
-    border: 2px solid #FFB7C5;
-    box-shadow: 
-      0 0 20px rgba(255, 183, 197, 0.8),
-      0 0 40px rgba(255, 120, 160, 0.6),
-      0 0 60px rgba(255, 80, 130, 0.4);
-  }
-
-  .card:nth-child(2):hover {
-    border: 2px solid #B5EAD7;
-    box-shadow: 
-      0 0 20px rgba(181, 234, 215, 0.8),
-      0 0 40px rgba(120, 220, 180, 0.6),
-      0 0 60px rgba(80, 200, 150, 0.4);
-  }
-
-  .card:nth-child(4):hover {
-    border: 2px solid #FFDAC1;
-    box-shadow: 
-      0 0 20px rgba(255, 218, 193, 0.8),
-      0 0 40px rgba(255, 190, 150, 0.6),
-      0 0 60px rgba(255, 150, 100, 0.4);
-  }
-
-  .card h3, 
-  .card h4 {
+  /* 分割线 (标题下方) */
+  .card h3, .card h4 {
     margin-top: 0;
     margin-bottom: 10px;
     position: relative;
-    padding-bottom: 5px;
-    text-align: center;
+    padding-bottom: 8px;
   }
 
   .card h3::after,
   .card h4::after {
     content: "";
     display: block;
-    width: 70%;
+    width: 100%;
     height: 2px;
     background: linear-gradient(to right, #0ff, #444);
-    margin: 6px auto 0;
+    margin-top: 6px;
     border-radius: 2px;
   }
 
-  .title1 { color: #FFB7C5; text-shadow: 0 0 8px #FFB7C5; }
-  .title2 { color: #B5EAD7; text-shadow: 0 0 8px #B5EAD7; }
-  .title3 { color: #FFDAC1; text-shadow: 0 0 8px #FFDAC1; }
+  /* 五个标题马卡龙荧光色 */
+  .title1 { color: #FFB7C5; text-shadow: 0 0 8px #FFB7C5; } /* 粉色 */
+  .title2 { color: #B5EAD7; text-shadow: 0 0 8px #B5EAD7; } /* 薄荷绿 */
+  .title3 { color: #C7CEEA; text-shadow: 0 0 8px #C7CEEA; } /* 浅紫色 */
+  .title4 { color: #FFDAC1; text-shadow: 0 0 8px #FFDAC1; } /* 奶油橙 */
+  .title5 { color: #E0BBE4; text-shadow: 0 0 8px #E0BBE4; } /* 淡紫荧光 */
 
+  /* 📱 手机版 (≤768px) → 一列 */
   @media (max-width: 768px) {
     .card-container {
       flex-direction: column;
-      align-items: stretch;
-      gap: 15px;
-      margin: 15px auto;
-      padding: 0 15px;
+      align-items: center;    
+      gap: 10px;
+      flex-wrap: wrap; 
     }
     .card {
-      width: 100%;
-      max-width: none;
-      margin: 0;
+      width: 90%;  
+      max-width: 300px;
     }
     .slideshow-container {
       height: 30vh;
     }
   }
 
+  /* 📲 平板 (768px ~ 1024px) → 两列 */
   @media (min-width: 769px) and (max-width: 1024px) {
     .card-container {
       flex-wrap: wrap;
       gap: 30px;
     }
     .card {
-      width: 45%;
+      width: 45%; /* 两列 */
       max-width: 500px;
     }
     .slideshow-container {
-      height: 35vh;
+      height: 35vh; /* 平板稍微缩小 */
     }
   }
 </style>
 </head>
 <body>
 
+<!-- 上方轮播 -->
 <div class="slideshow-container">
   <img src="https://i.postimg.cc/bJCCGvm9/WEB-2.png" class="slide active" alt="图片1">
   <img src="https://i.postimg.cc/xTHwZKxr/WEBSITE-2.png" class="slide" alt="图片2">
-  <img src="https://i.postimg.cc/gJXSZW19/YONO-E2.png" class="slide" alt="图片3">
+  <img src="https://i.postimg.cc/MGRQX3P9/33.jpg" class="slide" alt="图片3">
 </div>
 
+<!-- 下方卡片 -->
 <div class="card-container">
   <div class="card">
     <h3 class="title1">Highlights of Yono Rummy</h3>
@@ -176,22 +146,22 @@
     <h3 class="title2">Key Features</h3>
     <p>1. Multiple Games: Variety of game types for players.</p>
     <p>2. User-friendly interface: Simple navigation.</p>
-    <p>3. Exciting Bonuses: Welcome bonus, free spins, daily bonus.</p>
+    <p>3. Exciting Bonuses: Welcome bonuses, free spins, daily bonuses.</p>
     <p>4. Safe and Reliable: State-of-the-art encryption.</p>
     <p>5. Mobile Compatibility: Fully optimized for Android devices.</p>
-    <h4 class="title3">How to Claim Welcome Bonus</h4>
-    <p>1. Click "Download" to install the App</p>
+    <h4 class="title3">📌 How to Claim Welcome Bonus</h4>
+    <p>1. Click “Download” to install the App</p>
     <p>2. Register your account and verify mobile</p>
     <p>3. Bind mobile phone number</p>
     <p>4. Bonus credited instantly</p>
   </div>
 
   <div class="card">
-    <h3 class="title1">Perfect For</h3>
+    <h3 class="title4">🎮 Perfect For</h3>
     <p>- Players who like multiple online games</p>
     <p>- Players who require simple operation and fast deposit/withdrawal</p>
     <p>- Players who like real money rewards and welfare activities</p>
-    <h4 class="title2">Questions & Answers</h4>
+    <h4 class="title5">Questions & Answers</h4>
     <p>Q1: Can the app be downloaded to multiple devices?</p>
     <p>A: Only one device can log in at a time for fairness.</p>
     <p>Q2: Can I register multiple accounts?</p>
@@ -202,6 +172,7 @@
 </div>
 
 <script>
+  // 轮播 JS
   let slides = document.querySelectorAll('.slide');
   let currentIndex = 0;
 
